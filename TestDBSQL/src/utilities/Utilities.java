@@ -8,4 +8,9 @@ public class Utilities {
 		if(value==null) return null;
 		return ((Date)value).toLocalDate();
 	}
+	
+	public static Date localDateToDate(LocalDate value){
+		if(value==null) return null;
+		return java.sql.Date.valueOf(value);
+	}
 }

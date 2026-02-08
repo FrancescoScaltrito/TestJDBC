@@ -17,6 +17,12 @@ public class Persona {
 		this.cognome = cognome;
 		this.data_di_nascita = data_di_nascita;
 	}
+	public Persona(String nome, String cognome, LocalDate data_di_nascita) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.data_di_nascita = data_di_nascita;
+	}
 	public Persona() {
 		super();
 	}

@@ -44,6 +44,21 @@ public class SQLManager {
 			throw new Exception();
 		}
 	}
+	
+	public int update(String query)throws Exception{
+		try {
+			PreparedStatement ps = ConnectorJDBC.getInstance()
+						.getConnection().prepareStatement(query);
+			System.out.println("After preparedStatement");
+			int result = ps.executeUpdate();
+			return result;
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			//e.printStackTrace();
+			throw new Exception();
+		}
+	}
+	
 	public List<String> listOfTables(String dbName) throws Exception{
 		List<String> lT = new ArrayList<String>();
 		try {

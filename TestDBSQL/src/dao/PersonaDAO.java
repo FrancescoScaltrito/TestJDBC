@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,6 +70,34 @@ public class PersonaDAO {
 	    }
 
 	    return new ArrayList<>(personeMap.values());
+	}
+	
+	public void insertPersona(Persona p) {
+		String query = ConnectorJDBC.getInstance().getQuery("query.insert");
+		query = query + "(" 
+				+"\""+p.getNome() + "\""+ ","
+				+"\""+(String)p.getCognome() + "\""+ ","
+				+"\""+Utilities.localDateToDate(p.getData_di_nascita() )+"\""		//da implementare conversione in Utilities
+				+ ");";
+		System.out.println(query);
+		try {
+			db.update(query);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void deletePersona(int id) {
+		String query = ConnectorJDBC.getInstance().getQuery("query.delete");
+		query = query +""+id;
+		System.out.println(query);
+		try {
+			db.update(query);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	
