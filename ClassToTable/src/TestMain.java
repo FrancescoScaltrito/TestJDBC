@@ -8,9 +8,9 @@ public class TestMain {
 
 	public static void main(String[] args) {
 		
-		classToTable.creaTabella(Macchina.class);
-		System.out.println("------------------------------------------");
-		classToTable.creaTabella(Persona.class);
+		String q1 = classToTable.creaTabella(Macchina.class);
+		String q2 = classToTable.creaTabella(Persona.class);
+		String q3 = classToTable.setPK(q1, "targa");
 
 	}
 	

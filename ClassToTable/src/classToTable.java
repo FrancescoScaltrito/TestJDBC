@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class classToTable {
 	
-	public static <T> void creaTabella(Class<T> obj) {
+	public static <T> String creaTabella(Class<T> obj) {
 		
-		String query = "create table NAME (FIELDS) ;";
+		String query = "create table NAME (FIELDS);";
 		
 		String className = obj.getName();
 		
@@ -43,7 +43,25 @@ public class classToTable {
 		
 		//String primaryKey = ",primary key(PRIMARY_KEY_FIELD)";
 		
-		System.out.println("Creazione di una tabella a partire dalla classe: "+className);
-		System.out.println("Query da eseguire: \n"+query);
+		System.out.println(">>> Creazione di una tabella a partire dalla classe: "+className);
+		System.out.println(">>> Query da eseguire: \n"+query);
+		
+		return query;
+	}
+	
+	public static String setPK(String query, String pkName) {
+		String rg = ", primary key(PK_NAME)";
+		if(!query.contains(pkName)) {
+			System.err.println("Campo \""+pkName +"\" non non presente...");
+		}else {
+			rg = rg.replace("PK_NAME", pkName);
+			query = query.replace(");", rg+");");
+			System.out.println(">>> Assegnazione PK: "+pkName);
+			System.out.println(query);
+			return query;
+		}
+		return null;
+		
+		
 	}
 }
