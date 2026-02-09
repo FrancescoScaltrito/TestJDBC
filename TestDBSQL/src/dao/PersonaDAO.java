@@ -81,7 +81,9 @@ public class PersonaDAO {
 				+ ");";
 		System.out.println(query);
 		try {
-			db.update(query);
+			int x =db.update(query);
+			System.out.printf("Esito insertPersona(%s) ",p);
+			System.out.println("è: "+x);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -94,7 +96,9 @@ public class PersonaDAO {
 		query = query +""+id;
 		System.out.println(query);
 		try {
-			db.update(query);
+			int x =db.update(query);
+			System.out.printf("Esito deletePersona(%d) ",id);
+			System.out.println("è: "+x);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

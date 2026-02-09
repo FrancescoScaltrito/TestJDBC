@@ -21,9 +21,10 @@ public class ServicesQuery {
 		case 2:System.out.println(">>> getPersone"); getPersone(); break;
 		case 3:System.out.println(">>> getAnimali"); getAnimali(); break;
 		case 4:System.out.println(">>> Inner Join Animali-Persona"); getInnerJoinPersoneAnimali(); break;
-		case 5:System.out.println(">>> Insert Persona"); Persona p = new Persona("NomeInsert","CognomeInsert",LocalDate.of(1999, 1, 10));
+		case 5:System.out.println(">>> Insert Persona"); Persona p = new Persona("NomeInsert2","CognomeInsert2",LocalDate.of(2009, 2, 20));
 				addPersona(p); break;
-		case 6:System.out.println(">>> Remove Persona"); removePersona(11); break;
+		case 6:System.out.println(">>> Remove Persona"); removePersona(12); break;
+		case 7:System.out.println(">>> Assegna Padrone"); assegnaPadrone(); break;
 		default: System.out.println("Operazione non riconosciuta");
 		}	
 		
@@ -79,8 +80,19 @@ public class ServicesQuery {
 	}
 	
 	private void removePersona(int id) {
-		String query = ConnectorJDBC.getInstance().getProperty("query.delete");
+		String query = ConnectorJDBC.getInstance().getQuery("query.delete");
 		personaDao.deletePersona(id);
+	}
+	
+	private void assegnaPadrone() {
+		String query = ConnectorJDBC.getInstance().getQuery("query.assegnapadrone");
+		System.out.println(query);
+		try {
+			db.update(query);
+		} catch (Exception e) {
+			System.out.println("Errore nell'assegnazione del padrone... "+e.getMessage());
+			e.printStackTrace();
+		}
 	}
 	
 	

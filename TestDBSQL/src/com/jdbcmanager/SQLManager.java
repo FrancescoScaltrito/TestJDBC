@@ -35,7 +35,7 @@ public class SQLManager {
 		try {
 			PreparedStatement ps = ConnectorJDBC.getInstance()
 						.getConnection().prepareStatement(query);
-			System.out.println("After preparedStatement");
+			//System.out.println("After preparedStatement");
 			ResultSet result = ps.executeQuery();
 			return resultSetToList(result);
 		}catch(Exception e) {
@@ -49,7 +49,7 @@ public class SQLManager {
 		try {
 			PreparedStatement ps = ConnectorJDBC.getInstance()
 						.getConnection().prepareStatement(query);
-			System.out.println("After preparedStatement");
+			//System.out.println("After preparedStatement");
 			int result = ps.executeUpdate();
 			return result;
 		}catch(Exception e) {

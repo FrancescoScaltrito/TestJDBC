@@ -1,10 +1,23 @@
+import java.time.LocalDate;
+
 import com.jdbcmanager.ConnectorJDBC;
 import com.jdbcmanager.ServicesQuery;
+
+import objects.Persona;
 
 public class Main_TestDBSQL {
 	public static void main(String[] args) {
 		System.out.println("Begin Main_TestDBSQL");
-		int operazione = 2;
+	/*		Operazioni possibili
+	 1: listTable(); 
+	 2  getPersone();  
+	 3: getAnimali();  
+	 4: getInnerJoinPersoneAnimali();
+	 5: addPersona(p); 
+	 6: removePersona(11);
+	 7: assegnaPadrone();
+	 */
+		int operazione = 0;
 		try {
 			ConnectorJDBC.getInstance().getConnection();
 			System.out.println("Conn OK");
